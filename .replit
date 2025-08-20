@@ -2,3 +2,9 @@ modules = ["python-3.12", "web"]
 
 [nix]
 channel = "stable-25_05"
+packages = ["glibcLocales"]
+
+[[ports]]
+localPort = 8000
+externalPort = 80
+exposeLocalhost = true
