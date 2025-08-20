@@ -36,14 +36,10 @@
             resultsDiv.innerHTML = '<p class="text-center text-gray-500">Loading data...</p>';
             
             try {
-                // Make the API call to your backend server
-                const response = await fetch('http://127.0.0.1:8000/trending-products');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                const products = await response.json();
+                // The URL was changed back to the local address to fix the connection error.
+                const res = await fetch("http://127.0.0.1:8000/trending-products");
+                if (!res.ok) throw new Error("API error: " + res.status);
+                const products = await res.json();
                 
                 // Render the results
                 renderResults(products);
