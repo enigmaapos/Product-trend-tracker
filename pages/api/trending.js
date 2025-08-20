@@ -1,5 +1,17 @@
 // pages/api/trending.js
-import { mean, std } from "mathjs";
+
+// Simple math helpers (no external library needed)
+function mean(arr) {
+  if (!arr.length) return 0;
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
+}
+
+function std(arr) {
+  if (!arr.length) return 0;
+  const mu = mean(arr);
+  const variance = mean(arr.map(x => (x - mu) ** 2));
+  return Math.sqrt(variance);
+}
 
 export default function handler(req, res) {
   // Incoming product data (from body or fallback demo data)
